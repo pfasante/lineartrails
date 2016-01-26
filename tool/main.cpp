@@ -94,7 +94,7 @@ int main(int argc, const char* argv[]) {
 
   args.parse(argc, argv);
 
-  if (args.getBoolParameter("-h") || argc == 1) {
+  if (args.getBoolParameter("-h")) {
     args.print_help();
   } else if (std::strcmp(args.getParameter("-u"), "checkchar") == 0) {
     std::cout << "Checking characteristic ... " << std::endl;
@@ -105,11 +105,13 @@ int main(int argc, const char* argv[]) {
     std::cout << "Configfile: " << args.getParameter("-i") << std::endl;
     std::cout << "Iterations: " << args.getIntParameter("-iter") << std::endl;
     config_search_keccak(args);
-  } else {
+  } else if (std::strcmp(args.getParameter("-u"), "search") == 0) {
     std::cout << "Searching ... " << std::endl;
     std::cout << "Configfile: " << args.getParameter("-i") << std::endl;
     std::cout << "Iterations: " << args.getIntParameter("-iter") << std::endl;
     config_search(args);
+  } else {
+    std::cerr << "Invalid argument -u " << args.getParameter("-u") << std::endl;
   }
 
   return 0;
