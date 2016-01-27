@@ -64,6 +64,10 @@ add_executable (lin
 	target/prost256.h
 	target/prost256_permutation.cpp
 	target/prost256_permutation.h
+	target/smallscaleaes.cpp
+	target/smallscaleaes.h
+	target/smallscaleaes_permutation.cpp
+	target/smallscaleaes_permutation.h
 )
 target_compile_definitions (lin PRIVATE -DTERMINALCOLORS)
 target_include_directories (lin PRIVATE tool/ target/)
