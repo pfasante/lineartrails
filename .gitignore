@@ -30,3 +30,6 @@ build/CMakeCache.txt
 build/CMakeFiles/
 build/Makefile
 build/cmake_install.cmake
+# configured files from build tool
+tool/cmdline.h
+tool/cmdline.c

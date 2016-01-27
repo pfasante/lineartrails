@@ -1,11 +1,19 @@
 cmake_minimum_required (VERSION 3.0)
 project (lineartrails)
 
+set (VERSION_MAJOR 0)
+set (VERSION_MINOR 1)
+
 set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
 
 set (CMAKE_CXX_FLAGS			"-Wall -Wpedantic -std=c++11")
 set (CMAKE_CXX_FLAGS_RELEASE	"-O3 -march=native -DNDEBUG")
 set (CMAKE_CXX_FLAGS_DEBUG		"-O0 -g")
+
+# Configure files
+# the cmdline header's version needs to be substituted
+configure_file ("${PROJECT_SOURCE_DIR}/tool.in/cmdline.h" "${PROJECT_SOURCE_DIR}/tool/cmdline.h")
+configure_file ("${PROJECT_SOURCE_DIR}/tool.in/cmdline.c" "${PROJECT_SOURCE_DIR}/tool/cmdline.c")
 
 add_executable (lin
 	tool/main.cpp
@@ -15,8 +23,8 @@ add_executable (lin
 
 	tool/cache.h
 	tool/cache.hpp
-	tool/commandlineparser.cpp
-	tool/commandlineparser.h
+	tool/cmdline.c
+	tool/cmdline.h
 	tool/configparser.cpp
 	tool/configparser.h
 	tool/guessmask.cpp
